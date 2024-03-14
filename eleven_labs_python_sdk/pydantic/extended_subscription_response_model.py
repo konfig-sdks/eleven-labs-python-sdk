@@ -48,6 +48,8 @@ class ExtendedSubscriptionResponseModel(BaseModel):
 
     status: Literal["trialing", "active", "incomplete", "incomplete_expired", "past_due", "canceled", "unpaid", "free"] = Field(alias='status')
 
+    billing_period: Literal["monthly_period", "annual_period"] = Field(alias='billing_period')
+
     next_invoice: InvoiceResponseModel = Field(alias='next_invoice')
 
     has_open_invoices: bool = Field(alias='has_open_invoices')

@@ -33,6 +33,7 @@ class SubscriptionResponseModel(
 
     class MetaOapg:
         required = {
+            "billing_period",
             "can_use_instant_voice_cloning",
             "character_limit",
             "allowed_to_extend_character_limit",
@@ -116,6 +117,20 @@ class SubscriptionResponseModel(
                 @schemas.classproperty
                 def FREE(cls):
                     return cls("free")
+            
+            
+            class billing_period(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+                
+                @schemas.classproperty
+                def MONTHLY_PERIOD(cls):
+                    return cls("monthly_period")
+                
+                @schemas.classproperty
+                def ANNUAL_PERIOD(cls):
+                    return cls("annual_period")
             __annotations__ = {
                 "tier": tier,
                 "character_count": character_count,
@@ -132,8 +147,10 @@ class SubscriptionResponseModel(
                 "can_use_professional_voice_cloning": can_use_professional_voice_cloning,
                 "currency": currency,
                 "status": status,
+                "billing_period": billing_period,
             }
     
+    billing_period: MetaOapg.properties.billing_period
     can_use_instant_voice_cloning: MetaOapg.properties.can_use_instant_voice_cloning
     character_limit: MetaOapg.properties.character_limit
     allowed_to_extend_character_limit: MetaOapg.properties.allowed_to_extend_character_limit
@@ -196,9 +213,12 @@ class SubscriptionResponseModel(
     def __getitem__(self, name: typing_extensions.Literal["status"]) -> MetaOapg.properties.status: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["billing_period"]) -> MetaOapg.properties.billing_period: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tier", "character_count", "character_limit", "can_extend_character_limit", "allowed_to_extend_character_limit", "next_character_count_reset_unix", "voice_limit", "max_voice_add_edits", "voice_add_edit_counter", "professional_voice_limit", "can_extend_voice_limit", "can_use_instant_voice_cloning", "can_use_professional_voice_cloning", "currency", "status", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tier", "character_count", "character_limit", "can_extend_character_limit", "allowed_to_extend_character_limit", "next_character_count_reset_unix", "voice_limit", "max_voice_add_edits", "voice_add_edit_counter", "professional_voice_limit", "can_extend_voice_limit", "can_use_instant_voice_cloning", "can_use_professional_voice_cloning", "currency", "status", "billing_period", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -249,15 +269,19 @@ class SubscriptionResponseModel(
     def get_item_oapg(self, name: typing_extensions.Literal["status"]) -> MetaOapg.properties.status: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["billing_period"]) -> MetaOapg.properties.billing_period: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tier", "character_count", "character_limit", "can_extend_character_limit", "allowed_to_extend_character_limit", "next_character_count_reset_unix", "voice_limit", "max_voice_add_edits", "voice_add_edit_counter", "professional_voice_limit", "can_extend_voice_limit", "can_use_instant_voice_cloning", "can_use_professional_voice_cloning", "currency", "status", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tier", "character_count", "character_limit", "can_extend_character_limit", "allowed_to_extend_character_limit", "next_character_count_reset_unix", "voice_limit", "max_voice_add_edits", "voice_add_edit_counter", "professional_voice_limit", "can_extend_voice_limit", "can_use_instant_voice_cloning", "can_use_professional_voice_cloning", "currency", "status", "billing_period", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
+        billing_period: typing.Union[MetaOapg.properties.billing_period, str, ],
         can_use_instant_voice_cloning: typing.Union[MetaOapg.properties.can_use_instant_voice_cloning, bool, ],
         character_limit: typing.Union[MetaOapg.properties.character_limit, decimal.Decimal, int, ],
         allowed_to_extend_character_limit: typing.Union[MetaOapg.properties.allowed_to_extend_character_limit, bool, ],
@@ -279,6 +303,7 @@ class SubscriptionResponseModel(
         return super().__new__(
             cls,
             *args,
+            billing_period=billing_period,
             can_use_instant_voice_cloning=can_use_instant_voice_cloning,
             character_limit=character_limit,
             allowed_to_extend_character_limit=allowed_to_extend_character_limit,

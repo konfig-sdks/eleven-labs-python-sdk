@@ -100,26 +100,21 @@ request_path_language_code = api_client.PathParameter(
     schema=LanguageCodeSchema,
     required=True,
 )
-SchemaFor200ResponseBodyApplicationJson = schemas.DictSchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: schemas.Unset = schemas.unset
 
 
 @dataclass
 class ApiResponseFor200Async(api_client.AsyncApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: schemas.Unset = schemas.unset
 
 
 _response_for_200 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor200,
     response_cls_async=ApiResponseFor200Async,
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaFor200ResponseBodyApplicationJson),
-    },
 )
 SchemaFor422ResponseBodyApplicationJson = HTTPValidationErrorSchema
 
@@ -436,16 +431,13 @@ class GetFile(BaseApi):
         xi_api_key: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ) -> Dictionary:
+    ) -> None:
         raw_response = await self.raw.aget_file(
             dubbing_id=dubbing_id,
             language_code=language_code,
             xi_api_key=xi_api_key,
             **kwargs,
         )
-        if validate:
-            return Dictionary(**raw_response.body)
-        return api_client.construct_model_instance(Dictionary, raw_response.body)
     
     
     def get_file(
@@ -454,15 +446,12 @@ class GetFile(BaseApi):
         language_code: str,
         xi_api_key: typing.Optional[str] = None,
         validate: bool = False,
-    ) -> Dictionary:
+    ) -> None:
         raw_response = self.raw.get_file(
             dubbing_id=dubbing_id,
             language_code=language_code,
             xi_api_key=xi_api_key,
         )
-        if validate:
-            return Dictionary(**raw_response.body)
-        return api_client.construct_model_instance(Dictionary, raw_response.body)
 
 
 class ApiForget(BaseApi):

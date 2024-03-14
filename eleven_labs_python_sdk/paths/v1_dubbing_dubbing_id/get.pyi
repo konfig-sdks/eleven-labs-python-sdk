@@ -33,10 +33,13 @@ import frozendict  # noqa: F401
 from eleven_labs_python_sdk import schemas  # noqa: F401
 
 from eleven_labs_python_sdk.model.http_validation_error import HTTPValidationError as HTTPValidationErrorSchema
+from eleven_labs_python_sdk.model.dubbing_metadata_response import DubbingMetadataResponse as DubbingMetadataResponseSchema
 
 from eleven_labs_python_sdk.type.http_validation_error import HTTPValidationError
+from eleven_labs_python_sdk.type.dubbing_metadata_response import DubbingMetadataResponse
 
 from ...api_client import Dictionary
+from eleven_labs_python_sdk.pydantic.dubbing_metadata_response import DubbingMetadataResponse as DubbingMetadataResponsePydantic
 from eleven_labs_python_sdk.pydantic.http_validation_error import HTTPValidationError as HTTPValidationErrorPydantic
 
 # Header params
@@ -90,17 +93,17 @@ request_path_dubbing_id = api_client.PathParameter(
     schema=DubbingIdSchema,
     required=True,
 )
-SchemaFor200ResponseBodyApplicationJson = schemas.DictSchema
+SchemaFor200ResponseBodyApplicationJson = DubbingMetadataResponseSchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: DubbingMetadataResponse
 
 
 @dataclass
 class ApiResponseFor200Async(api_client.AsyncApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: DubbingMetadataResponse
 
 
 _response_for_200 = api_client.OpenApiResponse(
@@ -412,15 +415,15 @@ class GetProjectMetadata(BaseApi):
         xi_api_key: typing.Optional[str] = None,
         validate: bool = False,
         **kwargs,
-    ) -> Dictionary:
+    ) -> DubbingMetadataResponsePydantic:
         raw_response = await self.raw.aget_project_metadata(
             dubbing_id=dubbing_id,
             xi_api_key=xi_api_key,
             **kwargs,
         )
         if validate:
-            return Dictionary(**raw_response.body)
-        return api_client.construct_model_instance(Dictionary, raw_response.body)
+            return DubbingMetadataResponsePydantic(**raw_response.body)
+        return api_client.construct_model_instance(DubbingMetadataResponsePydantic, raw_response.body)
     
     
     def get_project_metadata(
@@ -428,14 +431,14 @@ class GetProjectMetadata(BaseApi):
         dubbing_id: str,
         xi_api_key: typing.Optional[str] = None,
         validate: bool = False,
-    ) -> Dictionary:
+    ) -> DubbingMetadataResponsePydantic:
         raw_response = self.raw.get_project_metadata(
             dubbing_id=dubbing_id,
             xi_api_key=xi_api_key,
         )
         if validate:
-            return Dictionary(**raw_response.body)
-        return api_client.construct_model_instance(Dictionary, raw_response.body)
+            return DubbingMetadataResponsePydantic(**raw_response.body)
+        return api_client.construct_model_instance(DubbingMetadataResponsePydantic, raw_response.body)
 
 
 class ApiForget(BaseApi):

@@ -46,6 +46,8 @@ class RequiredSubscriptionResponseModel(TypedDict):
 
     status: str
 
+    billing_period: str
+
 class OptionalSubscriptionResponseModel(TypedDict, total=False):
     pass
 

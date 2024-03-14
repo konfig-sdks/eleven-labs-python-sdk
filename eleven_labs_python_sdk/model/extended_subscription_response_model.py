@@ -33,6 +33,7 @@ class ExtendedSubscriptionResponseModel(
 
     class MetaOapg:
         required = {
+            "billing_period",
             "next_invoice",
             "can_use_instant_voice_cloning",
             "character_limit",
@@ -138,6 +139,27 @@ class ExtendedSubscriptionResponseModel(
                 @schemas.classproperty
                 def FREE(cls):
                     return cls("free")
+            
+            
+            class billing_period(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+            
+            
+                class MetaOapg:
+                    enum_value_to_name = {
+                        "monthly_period": "MONTHLY_PERIOD",
+                        "annual_period": "ANNUAL_PERIOD",
+                    }
+                
+                @schemas.classproperty
+                def MONTHLY_PERIOD(cls):
+                    return cls("monthly_period")
+                
+                @schemas.classproperty
+                def ANNUAL_PERIOD(cls):
+                    return cls("annual_period")
         
             @staticmethod
             def next_invoice() -> typing.Type['InvoiceResponseModel']:
@@ -159,10 +181,12 @@ class ExtendedSubscriptionResponseModel(
                 "can_use_professional_voice_cloning": can_use_professional_voice_cloning,
                 "currency": currency,
                 "status": status,
+                "billing_period": billing_period,
                 "next_invoice": next_invoice,
                 "has_open_invoices": has_open_invoices,
             }
     
+    billing_period: MetaOapg.properties.billing_period
     next_invoice: 'InvoiceResponseModel'
     can_use_instant_voice_cloning: MetaOapg.properties.can_use_instant_voice_cloning
     character_limit: MetaOapg.properties.character_limit
@@ -227,6 +251,9 @@ class ExtendedSubscriptionResponseModel(
     def __getitem__(self, name: typing_extensions.Literal["status"]) -> MetaOapg.properties.status: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["billing_period"]) -> MetaOapg.properties.billing_period: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["next_invoice"]) -> 'InvoiceResponseModel': ...
     
     @typing.overload
@@ -235,7 +262,7 @@ class ExtendedSubscriptionResponseModel(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tier", "character_count", "character_limit", "can_extend_character_limit", "allowed_to_extend_character_limit", "next_character_count_reset_unix", "voice_limit", "max_voice_add_edits", "voice_add_edit_counter", "professional_voice_limit", "can_extend_voice_limit", "can_use_instant_voice_cloning", "can_use_professional_voice_cloning", "currency", "status", "next_invoice", "has_open_invoices", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["tier", "character_count", "character_limit", "can_extend_character_limit", "allowed_to_extend_character_limit", "next_character_count_reset_unix", "voice_limit", "max_voice_add_edits", "voice_add_edit_counter", "professional_voice_limit", "can_extend_voice_limit", "can_use_instant_voice_cloning", "can_use_professional_voice_cloning", "currency", "status", "billing_period", "next_invoice", "has_open_invoices", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -286,6 +313,9 @@ class ExtendedSubscriptionResponseModel(
     def get_item_oapg(self, name: typing_extensions.Literal["status"]) -> MetaOapg.properties.status: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["billing_period"]) -> MetaOapg.properties.billing_period: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["next_invoice"]) -> 'InvoiceResponseModel': ...
     
     @typing.overload
@@ -294,13 +324,14 @@ class ExtendedSubscriptionResponseModel(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tier", "character_count", "character_limit", "can_extend_character_limit", "allowed_to_extend_character_limit", "next_character_count_reset_unix", "voice_limit", "max_voice_add_edits", "voice_add_edit_counter", "professional_voice_limit", "can_extend_voice_limit", "can_use_instant_voice_cloning", "can_use_professional_voice_cloning", "currency", "status", "next_invoice", "has_open_invoices", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["tier", "character_count", "character_limit", "can_extend_character_limit", "allowed_to_extend_character_limit", "next_character_count_reset_unix", "voice_limit", "max_voice_add_edits", "voice_add_edit_counter", "professional_voice_limit", "can_extend_voice_limit", "can_use_instant_voice_cloning", "can_use_professional_voice_cloning", "currency", "status", "billing_period", "next_invoice", "has_open_invoices", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
+        billing_period: typing.Union[MetaOapg.properties.billing_period, str, ],
         next_invoice: 'InvoiceResponseModel',
         can_use_instant_voice_cloning: typing.Union[MetaOapg.properties.can_use_instant_voice_cloning, bool, ],
         character_limit: typing.Union[MetaOapg.properties.character_limit, decimal.Decimal, int, ],
@@ -324,6 +355,7 @@ class ExtendedSubscriptionResponseModel(
         return super().__new__(
             cls,
             *args,
+            billing_period=billing_period,
             next_invoice=next_invoice,
             can_use_instant_voice_cloning=can_use_instant_voice_cloning,
             character_limit=character_limit,

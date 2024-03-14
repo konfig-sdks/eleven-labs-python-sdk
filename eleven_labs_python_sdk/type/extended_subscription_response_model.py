@@ -47,6 +47,8 @@ class RequiredExtendedSubscriptionResponseModel(TypedDict):
 
     status: str
 
+    billing_period: str
+
     next_invoice: InvoiceResponseModel
 
     has_open_invoices: bool

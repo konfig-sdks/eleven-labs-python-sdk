@@ -46,5 +46,7 @@ class SubscriptionResponseModel(BaseModel):
     currency: Literal["usd", "eur"] = Field(alias='currency')
 
     status: Literal["trialing", "active", "incomplete", "incomplete_expired", "past_due", "canceled", "unpaid", "free"] = Field(alias='status')
+
+    billing_period: Literal["monthly_period", "annual_period"] = Field(alias='billing_period')
     class Config:
         arbitrary_types_allowed = True

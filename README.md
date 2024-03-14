@@ -1,4 +1,4 @@
-<div align="center">
+<div align="left">
 
 [![Visit Elevenlabs](./header.png)](https://elevenlabs.com)
 
@@ -518,12 +518,12 @@ Whether to prepare dub for edits in dubbing studio.
 
 ### `elevenlabs.dubbing.get_file`<a id="elevenlabsdubbingget_file"></a>
 
-Returns dubbed file.
+Returns dubbed file as a streamed file. Videos will be returned in MP4 format and audio only dubs will be returned in MP3.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```python
-get_file_response = elevenlabs.dubbing.get_file(
+elevenlabs.dubbing.get_file(
     dubbing_id="dubbing_id_example",
     language_code="language_code_example",
     xi_api_key="string_example",
@@ -574,6 +574,10 @@ ID of the dubbing project.
 ##### xi_api_key: `str`<a id="xi_api_key-str"></a>
 
 Your API key. This is required by most endpoints to access our API programatically. You can view your xi-api-key using the 'Profile' tab on the website.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`DubbingMetadataResponse`](./eleven_labs_python_sdk/pydantic/dubbing_metadata_response.py)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

@@ -10,31 +10,15 @@
 """
 
 import unittest
-from unittest.mock import patch
-
-import urllib3
 
 import eleven_labs_python_sdk
-from eleven_labs_python_sdk.paths.v1_dubbing_dubbing_id_audio_language_code import get
-from eleven_labs_python_sdk import configuration, schemas, api_client
-
-from .. import ApiTestMixin
+from eleven_labs_python_sdk.model.dubbing_metadata_response import DubbingMetadataResponse
+from eleven_labs_python_sdk import configuration
 
 
-class TestV1DubbingDubbingIdAudioLanguageCode(ApiTestMixin, unittest.TestCase):
-    """
-    V1DubbingDubbingIdAudioLanguageCode unit test stubs
-        Get Dubbed File
-    """
-
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
-    response_status = 200
-    response_body = ''
+class TestDubbingMetadataResponse(unittest.TestCase):
+    """DubbingMetadataResponse unit test stubs"""
+    pass
 
 
 if __name__ == '__main__':
