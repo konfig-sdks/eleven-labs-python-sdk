@@ -3,6 +3,7 @@ import typing_extensions
 from eleven_labs_python_sdk.apis.tags import TagValues
 from eleven_labs_python_sdk.apis.tags.projects_api import ProjectsApi
 from eleven_labs_python_sdk.apis.tags.voices_api import VoicesApi
+from eleven_labs_python_sdk.apis.tags.admin_api import AdminApi
 from eleven_labs_python_sdk.apis.tags.speech_history_api import SpeechHistoryApi
 from eleven_labs_python_sdk.apis.tags.dubbing_api import DubbingApi
 from eleven_labs_python_sdk.apis.tags.voice_generation_api import VoiceGenerationApi
@@ -21,6 +22,7 @@ TagToApi = typing_extensions.TypedDict(
     {
         TagValues.PROJECTS: ProjectsApi,
         TagValues.VOICES: VoicesApi,
+        TagValues.ADMIN: AdminApi,
         TagValues.SPEECHHISTORY: SpeechHistoryApi,
         TagValues.DUBBING: DubbingApi,
         TagValues.VOICEGENERATION: VoiceGenerationApi,
@@ -40,6 +42,7 @@ tag_to_api = TagToApi(
     {
         TagValues.PROJECTS: ProjectsApi,
         TagValues.VOICES: VoicesApi,
+        TagValues.ADMIN: AdminApi,
         TagValues.SPEECHHISTORY: SpeechHistoryApi,
         TagValues.DUBBING: DubbingApi,
         TagValues.VOICEGENERATION: VoiceGenerationApi,

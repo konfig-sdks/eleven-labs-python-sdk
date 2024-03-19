@@ -8,6 +8,7 @@ import enum
 class TagValues(str, enum.Enum):
     PROJECTS = "projects"
     VOICES = "voices"
+    ADMIN = "admin"
     SPEECHHISTORY = "speech-history"
     DUBBING = "dubbing"
     VOICEGENERATION = "voice-generation"

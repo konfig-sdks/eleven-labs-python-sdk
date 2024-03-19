@@ -16,6 +16,7 @@ from eleven_labs_python_sdk.configuration import Configuration
 from eleven_labs_python_sdk.api_client import ApiClient
 from eleven_labs_python_sdk.type_util import copy_signature
 from eleven_labs_python_sdk.apis.tags.pronunciation_dictionary_api import PronunciationDictionaryApi
+from eleven_labs_python_sdk.apis.tags.admin_api import AdminApi
 from eleven_labs_python_sdk.apis.tags.audio_native_api import AudioNativeApi
 from eleven_labs_python_sdk.apis.tags.dubbing_api import DubbingApi
 from eleven_labs_python_sdk.apis.tags.models_api import ModelsApi
@@ -42,6 +43,7 @@ class ElevenLabs(ClientCustom):
             raise Exception("configuration is required")
         api_client = ApiClient(configuration)
         self.pronunciation_dictionary: PronunciationDictionaryApi = PronunciationDictionaryApi(api_client)
+        self.admin: AdminApi = AdminApi(api_client)
         self.audio_native: AudioNativeApi = AudioNativeApi(api_client)
         self.dubbing: DubbingApi = DubbingApi(api_client)
         self.models: ModelsApi = ModelsApi(api_client)

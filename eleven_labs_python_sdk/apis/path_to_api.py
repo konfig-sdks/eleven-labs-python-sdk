@@ -44,6 +44,12 @@ from eleven_labs_python_sdk.apis.paths.v1_models import V1Models
 from eleven_labs_python_sdk.apis.paths.v1_audio_native import V1AudioNative
 from eleven_labs_python_sdk.apis.paths.v1_shared_voices import V1SharedVoices
 from eleven_labs_python_sdk.apis.paths.v1_pronunciation_dictionaries_add_from_file import V1PronunciationDictionariesAddFromFile
+from eleven_labs_python_sdk.apis.paths.admin_n8enylacgd_vanity_link_vanity_link_id_update import AdminN8enylacgdVanityLinkVanityLinkIdUpdate
+from eleven_labs_python_sdk.apis.paths.admin_n8enylacgd_vanity_link_vanity_link_id_delete import AdminN8enylacgdVanityLinkVanityLinkIdDelete
+from eleven_labs_python_sdk.apis.paths.admin_n8enylacgd_vanity_links import AdminN8enylacgdVanityLinks
+from eleven_labs_python_sdk.apis.paths.admin_n8enylacgd_vanity_link_slug import AdminN8enylacgdVanityLinkSlug
+from eleven_labs_python_sdk.apis.paths.admin_n8enylacgd_coupon_promocode_archive import AdminN8enylacgdCouponPromocodeArchive
+from eleven_labs_python_sdk.apis.paths.admin_n8enylacgd_coupons import AdminN8enylacgdCoupons
 from eleven_labs_python_sdk.apis.paths.docs import Docs
 from eleven_labs_python_sdk.apis.paths.v1_pronunciation_dictionaries_pronunciation_dictionary_id import V1PronunciationDictionariesPronunciationDictionaryId
 
@@ -93,6 +99,12 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.V1_AUDIONATIVE: V1AudioNative,
         PathValues.V1_SHAREDVOICES: V1SharedVoices,
         PathValues.V1_PRONUNCIATIONDICTIONARIES_ADDFROMFILE: V1PronunciationDictionariesAddFromFile,
+        PathValues.ADMIN_N8ENYLACGD_VANITYLINK_VANITY_LINK_ID_UPDATE: AdminN8enylacgdVanityLinkVanityLinkIdUpdate,
+        PathValues.ADMIN_N8ENYLACGD_VANITYLINK_VANITY_LINK_ID_DELETE: AdminN8enylacgdVanityLinkVanityLinkIdDelete,
+        PathValues.ADMIN_N8ENYLACGD_VANITYLINKS: AdminN8enylacgdVanityLinks,
+        PathValues.ADMIN_N8ENYLACGD_VANITYLINK_SLUG: AdminN8enylacgdVanityLinkSlug,
+        PathValues.ADMIN_N8ENYLACGD_COUPON_PROMOCODE_ARCHIVE: AdminN8enylacgdCouponPromocodeArchive,
+        PathValues.ADMIN_N8ENYLACGD_COUPONS: AdminN8enylacgdCoupons,
         PathValues.DOCS: Docs,
         PathValues.V1_PRONUNCIATIONDICTIONARIES_PRONUNCIATION_DICTIONARY_ID: V1PronunciationDictionariesPronunciationDictionaryId,
     }
@@ -143,6 +155,12 @@ path_to_api = PathToApi(
         PathValues.V1_AUDIONATIVE: V1AudioNative,
         PathValues.V1_SHAREDVOICES: V1SharedVoices,
         PathValues.V1_PRONUNCIATIONDICTIONARIES_ADDFROMFILE: V1PronunciationDictionariesAddFromFile,
+        PathValues.ADMIN_N8ENYLACGD_VANITYLINK_VANITY_LINK_ID_UPDATE: AdminN8enylacgdVanityLinkVanityLinkIdUpdate,
+        PathValues.ADMIN_N8ENYLACGD_VANITYLINK_VANITY_LINK_ID_DELETE: AdminN8enylacgdVanityLinkVanityLinkIdDelete,
+        PathValues.ADMIN_N8ENYLACGD_VANITYLINKS: AdminN8enylacgdVanityLinks,
+        PathValues.ADMIN_N8ENYLACGD_VANITYLINK_SLUG: AdminN8enylacgdVanityLinkSlug,
+        PathValues.ADMIN_N8ENYLACGD_COUPON_PROMOCODE_ARCHIVE: AdminN8enylacgdCouponPromocodeArchive,
+        PathValues.ADMIN_N8ENYLACGD_COUPONS: AdminN8enylacgdCoupons,
         PathValues.DOCS: Docs,
         PathValues.V1_PRONUNCIATIONDICTIONARIES_PRONUNCIATION_DICTIONARY_ID: V1PronunciationDictionariesPronunciationDictionaryId,
     }
